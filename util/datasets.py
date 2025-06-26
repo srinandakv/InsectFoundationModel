@@ -32,15 +32,12 @@ class IP102(torch.utils.data.Dataset):
             lines = f.readlines()
 
         for line in lines:
-	    filename, class_id = line.strip().split()
-	    class_id = int(class_id)
+            filename, class_id = line.strip().split()
+            class_id = int(class_id)
 
-	    # Add class_id as subfolder to match dataset structure
-	    filename = os.path.join(str(class_id), filename)
-
-	    self.image_list.append(os.path.join(root, split, filename))
-	    self.label_list.append(class_id)
-
+    
+            self.image_list.append(os.path.join(root, split, filename))
+            self.label_list.append(class_id)
 
         self.transform = transform
 
