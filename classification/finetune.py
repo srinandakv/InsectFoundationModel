@@ -17,6 +17,9 @@ import os
 import time
 from pathlib import Path
 
+import sys
+sys.path.append('/kaggle/working/InsectFoundationModel')
+
 import torch
 import torch.backends.cudnn as cudnn
 from torch.utils.tensorboard import SummaryWriter
