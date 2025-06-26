@@ -36,7 +36,7 @@ class IP102(torch.utils.data.Dataset):
             class_id = int(class_id)
 
     
-            self.image_list.append(os.path.join(root, split, filename))
+            self.image_list.append(os.path.join(root, split, str(class_id), filename))
             self.label_list.append(class_id)
 
         self.transform = transform
