@@ -28,14 +28,15 @@ class IP102(torch.utils.data.Dataset):
         self.image_list = []
         self.label_list = []
 
-        with open(os.path.join(root, f'{split}.txt')) as f:
+        with open(f'/kaggle/input/ip02-dataset/{split}.txt') as f:
             lines = f.readlines()
 
         for line in lines:
             filename, class_id = line.strip().split()
             class_id = int(class_id)
 
-            self.image_list.append(os.path.join(root, 'images', filename))
+            # ✅ Fix this path
+            self.image_list.append(os.path.join(root, 'classification', split, filename))
             self.label_list.append(class_id)
 
         self.transform = transform
@@ -48,13 +49,11 @@ class IP102(torch.utils.data.Dataset):
     def __getitem__(self, index):
         image_path = self.image_list[index]
         label = self.label_list[index]
-        image = PIL.Image.open(image_path)
-        image = image.convert("RGB")
+        image = PIL.Image.open(image_path).convert("RGB")
         if self.transform:
             image = self.transform(image)
 
         return image, label
-
 
 class Insect1MDataset(torch.utils.data.Dataset):
     def __init__(self, root, metadata_filepath, transform=None):
