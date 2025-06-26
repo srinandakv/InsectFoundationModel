@@ -28,7 +28,7 @@ class IP102(torch.utils.data.Dataset):
         self.image_list = []
         self.label_list = []
 
-        with open(f'/kaggle/input/ip02-dataset/{split}.txt') as f:
+        with open(os.path.join(root, f'{split}.txt')) as f:
             lines = f.readlines()
 
         for line in lines:
