@@ -115,8 +115,7 @@ def get_args_parser():
     # * Finetuning params
     parser.add_argument('--finetune', default='',
                         help='finetune from checkpoint')
-    parser.add_argument('--global_pool', action='store_true')
-    parser.set_defaults(global_pool=True)
+    parser.add_argument('--global_pool', action='store_true', default=False, help='Use global average pooling')
 
     # Dataset parameters
     parser.add_argument('--data_path', default='/datasets01/imagenet_full_size/061417/', type=str,
