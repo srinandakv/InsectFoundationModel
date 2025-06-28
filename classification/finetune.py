@@ -182,7 +182,7 @@ def main(args):
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
     dataset_train = IP102(args.data_path, transform=transform_train, split='train')
-    dataset_val = IP102(args.data_path, transform=transform_val, split='val')
+    dataset_val = IP102(args.data_path, transform=transform_val, split='test')
 
     if args.distributed:
         num_tasks = misc.get_world_size()
