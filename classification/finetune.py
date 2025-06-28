@@ -242,9 +242,9 @@ def main(args):
     )
 
     if args.finetune:
-        # checkpoint = torch.load(args.finetune, map_location='cpu')
-	torch.serialization.add_safe_globals([argparse.Namespace])
-	checkpoint = torch.load(args.finetune, map_location='cpu', weights_only=False)
+        torch.serialization.add_safe_globals([argparse.Namespace])
+	# checkpoint = torch.load(args.finetune, map_location='cpu')
+        checkpoint = torch.load(args.finetune, map_location='cpu', weights_only=False)
         print("Load pre-trained checkpoint from: %s" % args.finetune)
         checkpoint_model = checkpoint['model_state_dict']
         new_state_dict = {}
