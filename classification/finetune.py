@@ -241,7 +241,7 @@ def main(args):
         global_pool=args.global_pool,
     )
 
-    if args.finetune and not args.eval:
+    if args.finetune:
         checkpoint = torch.load(args.finetune, map_location='cpu')
 
         print("Load pre-trained checkpoint from: %s" % args.finetune)
@@ -273,7 +273,8 @@ def main(args):
             assert set(msg.missing_keys) == {'head.weight', 'head.bias', 'norm.weight', 'norm.bias'}
 
         # manually initialize fc layer
-        trunc_normal_(model.head.weight, std=2e-5)
+        if not args.eval:
+            trunc_normal_(model.head.weight, std=2e-5)
 
     model.to(device)
 
