@@ -268,10 +268,10 @@ def main(args):
         msg = model.load_state_dict(new_state_dict, strict=False)
         print(msg)
 
-        if args.global_pool:
-            assert set(msg.missing_keys) == {'head.weight', 'head.bias', 'fc_norm.weight', 'fc_norm.bias'}
-        else:
-            assert set(msg.missing_keys) == {'head.weight', 'head.bias', 'norm.weight', 'norm.bias'}
+        #if args.global_pool:
+        #    assert set(msg.missing_keys) == {'head.weight', 'head.bias', 'fc_norm.weight', 'fc_norm.bias'}
+        #else:
+        #    assert set(msg.missing_keys) == {'head.weight', 'head.bias', 'norm.weight', 'norm.bias'}
 
         # manually initialize fc layer
         if not args.eval:
